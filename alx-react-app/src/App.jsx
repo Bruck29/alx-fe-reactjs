@@ -5,7 +5,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Header from './components/Header';
 import MainContent from './components/MainContent';
-import Footer from './components/Footer';
+import Footer from './components/footer';
 
 function App() {
   const [count, setCount] = useState(0)
