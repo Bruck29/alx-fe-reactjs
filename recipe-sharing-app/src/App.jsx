@@ -1,54 +1,51 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import RecipeList from './components/RecipeList';
-import AddRecipeForm from './components/AddRecipeForm';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import RecipeList from './components/RecipeList';
 import AddRecipeForm from './components/AddRecipeForm';
 import RecipeDetails from './components/RecipeDetails';
-function App() {
-  const [count, setCount] = useState(0)
+import EditRecipeForm from './components/EditRecipeForm';
+import DeleteRecipeButton from './components/DeleteRecipeButton';
+import FavoritesList from './components/FavoritesList';
+import RecommendationsList from './components/RecommendationsList';
 
+const App = () => {
   return (
-    <>
     <Router>
       <div>
-        <h1>Recipe Sharing App</h1>
+        <nav>
+          <Link to="/">Home</Link> | 
+          <Link to="/favorites">My Favorites</Link> | 
+          <Link to="/recommendations">Recommendations</Link>
+        </nav>
+        
         <Routes>
-          <Route path="/" element={<><AddRecipeForm /><RecipeList /></>} />
-          <Route path="/recipe/:recipeId" element={<RecipeDetails />} />
+          {/* Home route displaying RecipeList and AddRecipeForm */}
+          <Route path="/" element={
+            <>
+              <h1>Recipe Sharing App</h1>
+              <AddRecipeForm />
+              <RecipeList />
+            </>
+          } />
+
+          {/* Route for viewing a recipe's details */}
+          <Route path="/recipe/:id" element={
+            <>
+              <RecipeDetails />
+              <EditRecipeForm />
+              <DeleteRecipeButton />
+            </>
+          } />
+
+          {/* Route for viewing the user's favorite recipes */}
+          <Route path="/favorites" element={<FavoritesList />} />
+
+          {/* Route for viewing personalized recommendations */}
+          <Route path="/recommendations" element={<RecommendationsList />} />
         </Routes>
       </div>
     </Router>
-    <div>
-      <h1>Recipe Sharing App</h1>
-      <AddRecipeForm />
-      <RecipeList />
-    </div>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
