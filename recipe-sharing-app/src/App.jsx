@@ -1,43 +1,20 @@
-import React from 'react';
-import ProfilePage from './ProfilePage';
-import UserContext from './UserContext';
-import WelcomeMessage from './components/WelcomeMessage';
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Header from './components/Header';
-import MainContent from './components/MainContent';
-import Footer from './components/Footer';
-import UserProfile from './components/UserProfile';
-import UserContext from './UserContext';
-
-
+import RecipeList from './components/RecipeList';
+import AddRecipeForm from './components/AddRecipeForm';
 
 function App() {
   const [count, setCount] = useState(0)
-  const userData = { name: "Jane Doe", email: "jane.doe@example.com" };
 
   return (
     <>
-    <UserContext.Provider value={userData}>
-      <ProfilePage />
-    </UserContext.Provider>
     <div>
-            <Header />
-            <MainContent />
-            <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
-            <Footer />
-        </div>
-      <div>
-            <Header />
-            <MainContent />
-            <Footer />
-        </div>  
-       <div>
-            {}
-            <WelcomeMessage />
-        </div>
+      <h1>Recipe Sharing App</h1>
+      <AddRecipeForm />
+      <RecipeList />
+    </div>
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
