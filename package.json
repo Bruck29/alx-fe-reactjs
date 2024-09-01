@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "react-todo": "^0.0.22",
     "semistandard": "^17.0.0"
   }
 }
