@@ -1,5 +1,17 @@
 import React, { useState, useEffect } from "react";
 import data from "../data.json";
+import { Link } from 'react-router-dom';
+
+<Link to={`/recipe/${recipe.id}`}>
+  <div className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transform hover:scale-105 transition duration-300">
+    <img src={recipe.image} alt={recipe.title} className="w-full h-48 object-cover" />
+    <div className="p-4">
+      <h2 className="text-xl font-bold mb-2">{recipe.title}</h2>
+      <p className="text-gray-600">{recipe.summary}</p>
+    </div>
+  </div>
+</Link>
+
 
 const HomePage = () => {
   const [recipes, setRecipes] = useState([]);
