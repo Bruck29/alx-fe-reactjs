@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { fetchAdvancedUserData } from '../services/githubService';
+import { fetchUserData, fetchAdvancedUserData } from '../services/githubService';
 
 const Search = () => {
   const [username, setUsername] = useState('');
@@ -47,7 +47,6 @@ const Search = () => {
   return (
     <div className="p-6 max-w-lg mx-auto">
       <form onSubmit={handleSubmit} className="space-y-4">
-        {/* Input fields for username, location, and minRepos */}
         <div>
           <label className="block text-gray-700">Username:</label>
           <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Enter GitHub username" className="input-field" />
